@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Authors>Dustin Metzgar</Authors>
+    <Version>1.0.1</Version>
+    <Company>Dustin Metzgar</Company>
+    <Product>Microsoft.CoreWf</Product>
+    <Description>The Windows Workflow Foundation (WF) runtime ported to the .NET Core
+Test Objects class library for WF on Core</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.3.0" />
+    <PackageReference Include="System.Diagnostics.TraceSource" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Xml" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XPath" Version="4.3.0" />
+    <PackageReference Include="xunit" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.CoreWf\Microsoft.CoreWf.csproj" />
+  </ItemGroup>
+
+</Project>

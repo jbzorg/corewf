@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <Description>The Windows Workflow Foundation (WF) runtime ported to the .NET Core
+BookmarkConsoleApp test application for WF on Core</Description>
+    <Version>1.0.1</Version>
+    <Authors>Dustin Metzgar</Authors>
+    <Company>Dustin Metzgar</Company>
+    <Product>Microsoft.CoreWf</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.CoreWf\Microsoft.CoreWf.csproj" />
+    <ProjectReference Include="..\JsonFileInstanceStore\JsonFileInstanceStore.csproj" />
+  </ItemGroup>
+
+</Project>

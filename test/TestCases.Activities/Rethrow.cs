@@ -297,7 +297,7 @@ namespace TestCases.Activities
         /// <summary>
         /// Persist after Catch before rethrow
         /// </summary>        
-        [Fact]
+        [Fact(Skip = "Newtonsoft.Json.JsonSerializationException : Self referencing loop detected for property 'ManifestModule' with type 'System.Reflection.RuntimeModule'")]
         public void PersistAfterCatchBeforeRethrow()
         {
             TestTryCatch root = new TestTryCatch("parent TryCatch")

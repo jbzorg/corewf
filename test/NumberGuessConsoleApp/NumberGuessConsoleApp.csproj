@@ -6,9 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.CoreWf">
-      <HintPath>..\..\..\..\..\Source\Repos\corewf\src\Microsoft.CoreWf\bin\Debug\netcoreapp1.1\Microsoft.CoreWf.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\src\Microsoft.CoreWf\Microsoft.CoreWf.csproj" />
   </ItemGroup>
 
 </Project>

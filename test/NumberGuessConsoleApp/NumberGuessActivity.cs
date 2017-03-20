@@ -3,35 +3,34 @@
 
 using Microsoft.CoreWf;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NumberGuessConsoleApp
 {
     class NumberGuessActivity : NativeActivity
     {
-        InArgument<int> MaxNumber;
-        OutArgument<int> Turns;
+        InArgument<int> MaxNumber = new InArgument<int>(0);
+        OutArgument<int> Turns = new OutArgument<int>();
 
-
-        int maxNumber;
         Variable<int> Guess = new Variable<int>("Guess", 0);
-        Variable<int> Target;
-
-        public NumberGuessActivity(int MaxNumber)
-        {
-            maxNumber = MaxNumber;
-            Target = new Variable<int>("Target", new Random().Next(1, maxNumber + 1));
-        }
+        Variable<int> Target = new Variable<int>("Target", 0);
 
         protected override void CacheMetadata(NativeActivityMetadata metadata)
         {
             metadata.AddImplementationVariable(Guess);
             metadata.AddImplementationVariable(Target);
+
+            var maxNumber = new RuntimeArgument("MaxNumber", typeof(int), ArgumentDirection.In, true);
+            metadata.Bind(MaxNumber, maxNumber);
+            metadata.AddArgument(maxNumber);
+
+            var turns = new RuntimeArgument("Turns", typeof(int), ArgumentDirection.Out, true);
+            metadata.Bind(Turns, turns);
+            metadata.AddArgument(turns);
         }
 
         protected override void Execute(NativeActivityContext context)
         {
+            Target.Set(context, new Random().Next(1, MaxNumber.Get(context) + 1));
             context.CreateBookmark("EnterGuess", new BookmarkCallback(BookmarkCallback), BookmarkOptions.MultipleResume);
         }
 
@@ -39,11 +38,9 @@ namespace NumberGuessConsoleApp
 
         void BookmarkCallback(NativeActivityContext context, Bookmark bookmark, object bookmarkData)
         {
-            int localGuess, localTarget = Target.Get(context);
-            Console.WriteLine($"Please enter a number between 1 and {maxNumber}");
-            while (!int.TryParse(Console.ReadLine(), out localGuess)) Console.WriteLine("Try again");
+            int localGuess = (int)bookmarkData, localTarget = Target.Get(context);
             Guess.Set(context, localGuess);
-            turns.Set(context, turns.Get(context) + 1);
+            Turns.Set(context, Turns.Get(context) + 1);
 
             if (localGuess != localTarget)
             {

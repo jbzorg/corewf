@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.CoreWf">
+      <HintPath>..\..\..\..\..\Source\Repos\corewf\src\Microsoft.CoreWf\bin\Debug\netcoreapp1.1\Microsoft.CoreWf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
